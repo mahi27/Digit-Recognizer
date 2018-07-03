@@ -16,6 +16,7 @@ def predict_letter(iage):
     nn_3 = pickle.load(open('neuralapp_2.pkl', 'rb'))
     
     img = cv2.imread('canvas.jpg')
+    img = cv2.copyMakeBorder(img,20,20,20,20,cv2.BORDER_CONSTANT,value=[255,255,255])
     imgray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     ret,thresh = cv2.threshold(imgray,60,255,cv2.THRESH_BINARY_INV)
     image, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
